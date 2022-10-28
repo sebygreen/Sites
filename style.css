@@ -8,7 +8,8 @@ html {
 }
 
 body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif,
+        "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
     color: white;
 }
 
@@ -33,7 +34,7 @@ header #links {
 
 header #links .header-link {
     margin: 0 10px 0 0;
-    border-radius: 10px;
+    border-radius: 8px;
     background-color: rgba(50, 50, 50, 1);
     border-top: 1px solid rgba(70, 70, 70, 1);
     border-right: 1px solid rgba(70, 70, 70, 1);
@@ -53,7 +54,7 @@ header #links .header-link img {
 header #links .header-link p {
     padding: 0 10px 0 0;
     text-decoration: none;
-    color: rgba(255, 255, 255, .8);
+    color: rgba(255, 255, 255, 0.8);
     font-size: 14px;
     font-weight: bold;
 }
@@ -64,67 +65,72 @@ section h2 {
 
 section #projects {
     display: flex;
-    justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
+    gap: 15px;
 }
 
 section #projects .site-link {
-    margin: 0 0 20px 0;
-    padding: 15px 20px;
+    padding: 15px;
     border-radius: 15px;
     background-color: rgba(50, 50, 50, 1);
     border-top: 1px solid rgba(70, 70, 70, 1);
     border-right: 1px solid rgba(70, 70, 70, 1);
     box-shadow: -2px 2px 5px 0 rgba(20, 20, 20, 1);
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
+    display: grid;
+    grid-template-columns: 1fr max-content;
+    grid-template-rows: 1fr;
+    gap: 15px;
 }
 
 section #projects .site-link img {
-    margin: 0 20px 0 0;
-    height: 50px;
+    height: 52px;
 }
 
-section #projects .site-link .site-metadata {
-    margin: 0 20px 0 0;
-}
-
-section #projects .site-link .site-metadata h3 {
+section #projects .site-link .left h3 {
     font-size: 22px;
 }
 
-section #projects .site-link .site-metadata h4 {
+section #projects .site-link .left h4 {
     font-size: 14px;
     font-weight: normal;
-    opacity: .6;
-
+    opacity: 0.6;
 }
 
-section #projects .site-link .site-metadata p {
-    margin: 10px 0 0 0;
+section #projects .site-link .right {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+section #projects .site-link .right a {
+    display: block;
+}
+
+section #projects .site-link .right a div {
+    padding: 10px;
+    border-radius: 8px;
+    display: inline-block;
+    background-color: rgb(35, 134, 54);
+    border-top: 1px solid rgba(55, 154, 74, 1);
+    border-right: 1px solid rgba(55, 154, 74, 1);
+    box-shadow: -2px 2px 5px 0 rgba(20, 20, 20, 0.6);
+}
+
+section #projects .site-link .right a div svg {
+    display: block;
+    margin: auto;
+    height: 24px;
+    color: white;
+}
+
+section #projects .site-link .right p {
     padding: 2px 5px;
+    display: block;
     background-color: rgba(30, 30, 30, 1);
     border-radius: 4px;
     font-size: 14px;
     color: white;
-    opacity: .4;
-    display: inline-block;
-}
-
-section #projects .site-link a {
-    padding: 8px 12px;
-    border-radius: 10px;
-    background-color: rgb(35, 134, 54);
-    border-top: 1px solid rgba(55, 154, 74, 1);
-    border-right: 1px solid rgba(55, 154, 74, 1);
-    box-shadow: -2px 2px 5px 0 rgba(20, 20, 20, .6);
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-}
-
-section #projects .site-link a svg {
-    height: 24px;
+    opacity: 0.4;
 }
