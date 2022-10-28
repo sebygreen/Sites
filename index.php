@@ -27,7 +27,7 @@ function debug_to_console($data)
             <h1>User Web Root</h1>
             <div id="information">
                 <p id="site-version">Version <span>0.6.0</span></p>
-                <p id="apache-version"><?= apache_get_version(); ?></p>
+                <p id="apache-version"><?= apache_get_version(); ?> <span>&bull;</span> phpversion()</p>
             </div>
 
             <div id="links">
