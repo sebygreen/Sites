@@ -1,14 +1,3 @@
-<?php
-function debug_to_console($data)
-{
-    $output = $data;
-    if (is_array($output))
-        $output = implode(',', $output);
-
-    echo "<script>console.log('Debug Objects: " . $output . "' );</script>";
-}
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -24,9 +13,9 @@ function debug_to_console($data)
 
     <div class="content-container">
         <header>
-            <h1>User Web Root</h1>
+            <h1>Apache webroot</h1>
             <div id="information">
-                <p id="site-version">Version <span>0.6.0</span></p>
+                <p id="site-version">Version <span>0.6.1</span></p>
                 <p id="apache-version"><?= apache_get_version(); ?> <span>&bull;</span> phpversion()</p>
             </div>
 

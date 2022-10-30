@@ -27,6 +27,10 @@ header #information {
     margin: 0 0 20px 0;
 }
 
+header #information p#apache-version span {
+    opacity: 0.4;
+}
+
 header #links {
     margin: 0 0 20px 0;
     display: flex;
