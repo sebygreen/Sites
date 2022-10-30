@@ -104,7 +104,7 @@
                     public function __construct($name)
                     {
                         $this->name = $name;
-                        $this->url = "http://$name.local";
+                        $this->url = "http://$name.test";
                         $this->icon = nameToIcon($name);
                         $this->size = nameToSize($name);
                     }

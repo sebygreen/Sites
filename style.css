@@ -69,7 +69,6 @@ section h2 {
 
 section #projects {
     display: flex;
-    align-items: center;
     flex-wrap: wrap;
     gap: 15px;
 }
@@ -84,11 +83,15 @@ section #projects .site-link {
     display: grid;
     grid-template-columns: 1fr max-content;
     grid-template-rows: 1fr;
+    flex-grow: 1;
+    min-width: calc(25% - 15px);
+    max-width: calc(33% - 15px);
     gap: 15px;
 }
 
 section #projects .site-link img {
     height: 52px;
+    margin: 0 0 10px 0;
 }
 
 section #projects .site-link .left h3 {
