@@ -13,50 +13,60 @@
 
     <div class="content-container">
         <header>
-            <h1>Apache webroot</h1>
-            <div id="information">
-                <p id="site-version">Version <span>0.6.1</span></p>
-                <p id="apache-version"><?= $_SERVER["SERVER_SOFTWARE"]; ?> <span>&bull;</span> PHP <?= phpversion(); ?></p>
-            </div>
-
-            <div id="links">
-                <?php
-                class Link
-                {
-                    // Properties
-                    public $url;
-                    public $turl;
-                    public $name;
-                    // Constructor
-                    public function __construct($url, $name)
+            <div id="left">
+                <h1>Apache webroot</h1>
+                <div id="information">
+                    <p id="site-version">Version <span>0.6.1</span></p>
+                    <p id="apache-version"><?= $_SERVER["SERVER_SOFTWARE"]; ?> <span>&bull;</span> PHP <?= phpversion(); ?></p>
+                </div>
+                <div id="links">
+                    <?php
+                    class Link
                     {
-                        $regex = '/(?:(?:http|ftp|https):\/\/)([\w.,@?^=%&:~+#-]+)/i';
+                        // Properties
+                        public $url;
+                        public $turl;
+                        public $name;
+                        // Constructor
+                        public function __construct($url, $name)
+                        {
+                            $regex = '/(?:(?:http|ftp|https):\/\/)([\w.,@?^=%&:~+#-]+)/i';
 
-                        $this->url = $url;
-                        $this->name = $name;
-                        preg_match($regex, $url, $turl);
-                        $this->turl = $turl[1];
+                            $this->url = $url;
+                            $this->name = $name;
+                            preg_match($regex, $url, $turl);
+                            $this->turl = $turl[1];
+                        }
                     }
-                }
 
-                // Links to edit. URL, name
-                $github = new Link('https://github.com', 'Github');
-                $speedtest = new Link('https://speedtest.net', 'Speedtest');
-                $getgrav = new Link('https://getgrav.org/blog/macos-monterey-apache-multiple-php-versions', 'GetGrav');
+                    // Links to edit. URL, name
+                    $github = new Link('https://github.com', 'Github');
+                    $speedtest = new Link('https://speedtest.net', 'Speedtest');
+                    $getgrav = new Link('https://getgrav.org/blog/macos-monterey-apache-multiple-php-versions', 'GetGrav');
 
-                // Main link array
-                $links = [$github, $speedtest, $getgrav];
+                    // Main link array
+                    $links = [$github, $speedtest, $getgrav];
 
-                foreach ($links as $link) {
-                    echo
-                    '<a target="_blank" href="' . $link->url . '">
-                                <div class="header-link">
-                                    <img src="https://icon.horse/icon/' . $link->turl . '" alt="' . $link->turl . ' icon">
-                                    <p>' . $link->name . '</p>
-                                </div>
-                            </a>';
-                }
-                ?>
+                    foreach ($links as $link) {
+                        echo
+                        '<a target="_blank" href="' . $link->url . '">
+                            <div class="header-link">
+                                <img src="https://icon.horse/icon/' . $link->turl . '" alt="' . $link->turl . ' icon">
+                                <p>' . $link->name . '</p>
+                            </div>
+                        </a>';
+                    }
+                    ?>
+                </div>
+            </div>
+            <div id="right">
+                <a target="_blank" href="/info.php">phpinfo()</a>
+                <button>
+                    <svg fill="currentColor" xmlns="http://www.w3.org/2000/svg" class="ionicon" viewBox="0 0 512 512">
+                        <title>Sunny</title>
+                        <path d="M256 118a22 22 0 01-22-22V48a22 22 0 0144 0v48a22 22 0 01-22 22zM256 486a22 22 0 01-22-22v-48a22 22 0 0144 0v48a22 22 0 01-22 22zM369.14 164.86a22 22 0 01-15.56-37.55l33.94-33.94a22 22 0 0131.11 31.11l-33.94 33.94a21.93 21.93 0 01-15.55 6.44zM108.92 425.08a22 22 0 01-15.55-37.56l33.94-33.94a22 22 0 1131.11 31.11l-33.94 33.94a21.94 21.94 0 01-15.56 6.45zM464 278h-48a22 22 0 010-44h48a22 22 0 010 44zM96 278H48a22 22 0 010-44h48a22 22 0 010 44zM403.08 425.08a21.94 21.94 0 01-15.56-6.45l-33.94-33.94a22 22 0 0131.11-31.11l33.94 33.94a22 22 0 01-15.55 37.56zM142.86 164.86a21.89 21.89 0 01-15.55-6.44l-33.94-33.94a22 22 0 0131.11-31.11l33.94 33.94a22 22 0 01-15.56 37.55zM256 358a102 102 0 11102-102 102.12 102.12 0 01-102 102z" />
+                    </svg>
+                </button>
             </div>
         </header>
         <section>
@@ -128,9 +138,10 @@
                             <a target="_blank" href="' . $project->url . '">
                                 <div>
                                     <svg fill="currentColor" xmlns="http://www.w3.org/2000/svg" class="ionicon" viewBox="0 0 512 512">
-                                        <title>Code</title>
+                                        <title>Eye</title>
+                                        <circle cx="256" cy="256" r="64" />
                                         <path
-                                            d="M160 389a20.91 20.91 0 01-13.82-5.2l-128-112a21 21 0 010-31.6l128-112a21 21 0 0127.66 31.61L63.89 256l109.94 96.19A21 21 0 01160 389zM352 389a21 21 0 01-13.84-36.81L448.11 256l-109.94-96.19a21 21 0 0127.66-31.61l128 112a21 21 0 010 31.6l-128 112A20.89 20.89 0 01352 389z"
+                                            d="M490.84 238.6c-26.46-40.92-60.79-75.68-99.27-100.53C349 110.55 302 96 255.66 96c-42.52 0-84.33 12.15-124.27 36.11-40.73 24.43-77.63 60.12-109.68 106.07a31.92 31.92 0 00-.64 35.54c26.41 41.33 60.4 76.14 98.28 100.65C162 402 207.9 416 255.66 416c46.71 0 93.81-14.43 136.2-41.72 38.46-24.77 72.72-59.66 99.08-100.92a32.2 32.2 0 00-.1-34.76zM256 352a96 96 0 1196-96 96.11 96.11 0 01-96 96z"
                                         />
                                     </svg>
                                 </div>
