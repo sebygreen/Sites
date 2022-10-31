@@ -16,7 +16,7 @@
             <h1>Apache webroot</h1>
             <div id="information">
                 <p id="site-version">Version <span>0.6.1</span></p>
-                <p id="apache-version"><?= apache_get_version(); ?> <span>&bull;</span> phpversion()</p>
+                <p id="apache-version"><?= $_SERVER["SERVER_SOFTWARE"]; ?> <span>&bull;</span> PHP <?= phpversion(); ?></p>
             </div>
 
             <div id="links">
