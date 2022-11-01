@@ -1,3 +1,14 @@
+<?php
+$themeClass = '';
+if (!empty($_COOKIE['theme'])) {
+    if ($_COOKIE['theme'] == 'dark') {
+        $themeClass = 'dark-theme';
+    } else if ($_COOKIE['theme'] == 'light') {
+        $themeClass = 'light-theme';
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,7 +20,7 @@
     <link href="style.css" rel="stylesheet" type="text/css" />
 </head>
 
-<body>
+<body class="<?= $themeClass; ?>">
 
     <div class="content-container">
         <header>
@@ -50,9 +61,9 @@
                     foreach ($links as $link) {
                         echo
                         '<a target="_blank" href="' . $link->url . '">
-                            <div class="header-link">
-                                <img src="https://icon.horse/icon/' . $link->turl . '" alt="' . $link->turl . ' icon">
+                            <div class="link">
                                 <p>' . $link->name . '</p>
+                                <img src="https://icon.horse/icon/' . $link->turl . '" alt="' . $link->turl . ' icon">
                             </div>
                         </a>';
                     }
@@ -60,8 +71,8 @@
                 </div>
             </div>
             <div id="right">
-                <a target="_blank" href="/info.php">phpinfo()</a>
-                <button>
+                <a class="button" target="_blank" href="/info.php">phpinfo();</a>
+                <button class="button" id="theme-toggle">
                     <svg fill="currentColor" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 512 512">
                         <path d="M256,118a22,22,0,0,1-22-22V48a22,22,0,0,1,44,0V96A22,22,0,0,1,256,118Z"></path>
                         <path d="M256,486a22,22,0,0,1-22-22V416a22,22,0,0,1,44,0v48A22,22,0,0,1,256,486Z"></path>
@@ -107,7 +118,6 @@
 
                     return sprintf('%.2f ' . $symbols[$exp], ($bytes / pow(1024, floor($exp))));
                 }
-
 
                 class Project
                 {
@@ -161,8 +171,8 @@
             </div>
 
         </section>
-
     </div>
+    <script src="script.js"></script>
 
 </body>
 
