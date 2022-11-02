@@ -95,9 +95,12 @@ if (!empty($_COOKIE['theme'])) {
                 {
                     $imgs = glob("./$name/favicon.{png,ico}", GLOB_BRACE);
                     if ($imgs != null) {
-                        $path = $imgs[0];
+                        $path = '<img src="' . $imgs[0] . '" alt="' . $name . ' icon">';
                     } else {
-                        $path = "./folder.svg";
+                        $path = '<svg fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                                    <path d="M408,96H252.11a23.89,23.89,0,0,1-13.31-4L211,73.41A55.77,55.77,0,0,0,179.89,64H104a56.06,56.06,0,0,0-56,56v24H464C464,113.12,438.88,96,408,96Z"></path>
+                                    <path d="M423.75,448H88.25a56,56,0,0,1-55.93-55.15L16.18,228.11l0-.28A48,48,0,0,1,64,176h384.1a48,48,0,0,1,47.8,51.83l0,.28L479.68,392.85A56,56,0,0,1,423.75,448ZM479.9,226.55h0Z"></path>
+                                </svg>';
                     }
                     return $path;
                 }
@@ -145,23 +148,20 @@ if (!empty($_COOKIE['theme'])) {
 
                 foreach ($projects as $project) {
                     echo
-                    '<div class="site-link">
+                    '<div class="project">
                         <div class="left">
-                            <img src="' . $project->icon . '" alt="' . $project->name . ' icon">
+                            ' . $project->icon . '
                             <h3>' . $project->name . '</h3>
                             <h4>' . $project->url . '</h4>
                         </div>
                         <div class="right">
-                            <a target="_blank" href="' . $project->url . '">
-                                <div>
-                                    <svg fill="currentColor" xmlns="http://www.w3.org/2000/svg" class="ionicon" viewBox="0 0 512 512">
-                                        <title>Eye</title>
+                            <a class="link-alt" target="_blank" href="' . $project->url . '">
+                                    <svg fill="currentColor" xmlns="http://www.w3.org/2000/svg" class="ionicon" height="24" width="24" viewBox="0 0 512 512">
                                         <circle cx="256" cy="256" r="64" />
                                         <path
                                             d="M490.84 238.6c-26.46-40.92-60.79-75.68-99.27-100.53C349 110.55 302 96 255.66 96c-42.52 0-84.33 12.15-124.27 36.11-40.73 24.43-77.63 60.12-109.68 106.07a31.92 31.92 0 00-.64 35.54c26.41 41.33 60.4 76.14 98.28 100.65C162 402 207.9 416 255.66 416c46.71 0 93.81-14.43 136.2-41.72 38.46-24.77 72.72-59.66 99.08-100.92a32.2 32.2 0 00-.1-34.76zM256 352a96 96 0 1196-96 96.11 96.11 0 01-96 96z"
                                         />
                                     </svg>
-                                </div>
                             </a>
                             <p>' . $project->size . '</p>
                         </div>

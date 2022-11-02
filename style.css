@@ -1,19 +1,29 @@
 /*light mode first, then dark mode if setting*/
 :root {
-    --main-bg: rgba(225, 225, 225, 1);
+    --main-bg: rgba(235, 235, 235, 1);
     --text-fg: rgba(20, 20, 20, 1);
+    --project-icon-fg: rgba(20, 20, 20, 0.4);
+    --info-fg: rgba(20, 20, 20, 0.6);
+    --info-bg: rgba(20, 20, 20, 0.05);
+    --project-bg: rgba(255, 255, 255, 1);
     --button-fg: rgba(20, 20, 20, 0.9);
     --button-bg: rgba(255, 255, 255, 1);
     --button-shadow: inset 1px -1px 2px -1px rgba(0, 0, 0, 0.1), -2px 2px 6px -5px rgba(0, 0, 0, 1);
+    --button-alt-shadow: inset -1px 1px 2px -1px rgba(255, 255, 255, 0.5), -2px 2px 6px -5px rgba(0, 0, 0, 1);
 }
 
 @media (prefers-color-scheme: dark) {
     :root {
         --main-bg: rgba(30, 30, 30, 1);
         --text-fg: rgba(255, 255, 255, 1);
+        --project-icon-fg: rgba(235, 235, 235, 0.4);
+        --info-fg: rgba(255, 255, 255, 0.6);
+        --info-bg: rgba(255, 255, 255, 0.05);
+        --project-bg: rgba(50, 50, 50, 1);
         --button-fg: rgba(255, 255, 255, 0.9);
         --button-bg: rgba(50, 50, 50, 1);
-        --button-shadow: inset -1px 1px 2px -1px rgba(255, 255, 255, 0.1), -2px 2px 6px 0 rgba(20, 20, 20, 1);
+        --button-shadow: inset -1px 1px 2px -1px rgba(255, 255, 255, 0.1), -2px 2px 6px 0 rgba(0, 0, 0, 1);
+        --button-alt-shadow: inset -1px 1px 2px -1px rgba(255, 255, 255, 0.3), -2px 2px 6px 0 rgba(0, 0, 0, 1);
     }
 }
 
@@ -67,6 +77,21 @@ a {
     font-size: 16px;
 }
 
+/*alt link (green eye buttons)*/
+.link-alt {
+    all: unset;
+    cursor: pointer;
+    margin: 0;
+    padding: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    color: rgba(255, 255, 255, 1);
+    background-color: rgba(55, 154, 74, 1);
+    box-shadow: var(--button-alt-shadow);
+}
+
 /*main*/
 html {
     background-color: var(--main-bg);
@@ -109,32 +134,6 @@ header #left #links {
     gap: 10px;
 }
 
-header #left #links .header-link {
-    border-radius: 8px;
-    background-color: rgba(50, 50, 50, 1);
-    border-top: 1px solid rgba(70, 70, 70, 1);
-    border-right: 1px solid rgba(70, 70, 70, 1);
-    box-shadow: -2px 2px 5px 0 rgba(20, 20, 20, 1);
-    display: inline-flex;
-    justify-content: space-between;
-    align-items: center;
-    overflow: hidden;
-}
-
-header #left #links .header-link img {
-    margin: 5px 10px 5px 5px;
-    height: 24px;
-    border-radius: 50%;
-}
-
-header #left #links .header-link p {
-    padding: 0 10px 0 0;
-    text-decoration: none;
-    color: rgba(255, 255, 255, 0.8);
-    font-size: 14px;
-    font-weight: bold;
-}
-
 header #right {
     display: flex;
     gap: 10px;
@@ -152,6 +151,7 @@ header #right button.button {
     width: 40px;
 }
 
+/*projects section*/
 section h2 {
     margin: 0 0 10px 0;
 }
@@ -162,68 +162,48 @@ section #projects {
     gap: 10px;
 }
 
-section #projects .site-link {
+section #projects .project {
     padding: 15px;
     border-radius: 15px;
-    border: 2px solid rgba(255, 255, 255, 0.1);
     display: grid;
     grid-template-columns: 1fr max-content;
     grid-template-rows: 1fr;
     flex-grow: 1;
+    gap: 15px;
     min-width: calc(25% - 15px);
     max-width: calc(33% - 15px);
-    gap: 15px;
+    background-color: var(--project-bg);
 }
 
-section #projects .site-link img {
+section #projects .project .left img,
+section #projects .project .left svg {
     height: 52px;
     margin: 0 0 10px 0;
+    color: var(--project-icon-fg);
 }
 
-section #projects .site-link .left h3 {
+section #projects .project .left h3 {
     font-size: 22px;
 }
 
-section #projects .site-link .left h4 {
+section #projects .project .left h4 {
     font-size: 14px;
     font-weight: normal;
     opacity: 0.6;
 }
 
-section #projects .site-link .right {
+section #projects .project .right {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: flex-end;
 }
 
-section #projects .site-link .right a {
-    display: block;
-}
-
-section #projects .site-link .right a div {
-    padding: 10px;
-    border-radius: 8px;
-    display: inline-block;
-    background-color: rgb(35, 134, 54);
-    border-top: 1px solid rgba(55, 154, 74, 1);
-    border-right: 1px solid rgba(55, 154, 74, 1);
-    box-shadow: -2px 2px 5px 0 rgba(20, 20, 20, 0.6);
-}
-
-section #projects .site-link .right a div svg {
-    display: block;
-    margin: auto;
-    height: 24px;
-    color: white;
-}
-
-section #projects .site-link .right p {
+section #projects .project .right p {
     padding: 2px 5px;
     display: block;
-    background-color: rgba(50, 50, 50, 1);
     border-radius: 4px;
     font-size: 14px;
-    color: white;
-    opacity: 0.4;
+    color: var(--info-fg);
+    background-color: var(--info-bg);
 }
