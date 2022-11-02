@@ -1,5 +1,9 @@
+/*easings*/
+@import "https://unpkg.com/open-props/easings.min.css";
+
 /*light mode first, then dark mode if setting*/
 :root {
+    color-scheme: light;
     --main-bg: rgba(235, 235, 235, 1);
     --text-fg: rgba(20, 20, 20, 1);
     --project-icon-fg: rgba(20, 20, 20, 0.4);
@@ -12,18 +16,80 @@
     --button-alt-shadow: inset -1px 1px 2px -1px rgba(255, 255, 255, 0.5), -2px 2px 6px -5px rgba(0, 0, 0, 1);
 }
 
-@media (prefers-color-scheme: dark) {
-    :root {
-        --main-bg: rgba(30, 30, 30, 1);
-        --text-fg: rgba(255, 255, 255, 1);
-        --project-icon-fg: rgba(235, 235, 235, 0.4);
-        --info-fg: rgba(255, 255, 255, 0.6);
-        --info-bg: rgba(255, 255, 255, 0.05);
-        --project-bg: rgba(50, 50, 50, 1);
-        --button-fg: rgba(255, 255, 255, 0.9);
-        --button-bg: rgba(50, 50, 50, 1);
-        --button-shadow: inset -1px 1px 2px -1px rgba(255, 255, 255, 0.1), -2px 2px 6px 0 rgba(0, 0, 0, 1);
-        --button-alt-shadow: inset -1px 1px 2px -1px rgba(255, 255, 255, 0.3), -2px 2px 6px 0 rgba(0, 0, 0, 1);
+[data-theme="dark"] {
+    color-scheme: dark;
+    --main-bg: rgba(30, 30, 30, 1);
+    --text-fg: rgba(255, 255, 255, 1);
+    --project-icon-fg: rgba(235, 235, 235, 0.4);
+    --info-fg: rgba(255, 255, 255, 0.6);
+    --info-bg: rgba(255, 255, 255, 0.05);
+    --project-bg: rgba(50, 50, 50, 1);
+    --button-fg: rgba(255, 255, 255, 0.9);
+    --button-bg: rgba(50, 50, 50, 1);
+    --button-shadow: inset -1px 1px 2px -1px rgba(255, 255, 255, 0.1), -2px 2px 6px -3px rgba(0, 0, 0, 1);
+    --button-alt-shadow: inset -1px 1px 2px -1px rgba(255, 255, 255, 0.3), -2px 2px 6px -3px rgba(0, 0, 0, 1);
+}
+
+/*sun and moon icon*/
+.sun-moon > :is(.moon, .sun, .sun-beams) {
+    transform-origin: center center;
+}
+
+.sun-moon > :is(.moon, .sun) {
+    fill: var(--button-fg);
+}
+
+.sun-moon > .sun-beams {
+    stroke: var(--button-fg);
+    stroke-width: 2px;
+}
+
+[data-theme="dark"] .sun-moon > .sun {
+    transform: scale(1.65);
+    transform: translate(2px);
+}
+
+[data-theme="dark"] .sun-moon > .sun-beams {
+    opacity: 0;
+}
+
+[data-theme="dark"] .sun-moon > .moon > circle {
+    transform: translate(-7px);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .sun-moon > .sun {
+        transition: transform 0.5s var(--ease-elastic-3);
+    }
+
+    .sun-moon > .sun-beams {
+        transition: transform 0.5s var(--ease-elastic-4), opacity 0.5s var(--ease-3);
+    }
+
+    .sun-moon .moon > circle {
+        transition: transform 0.25s var(--ease-out-5);
+    }
+
+    [data-theme="dark"] .sun-moon > .sun {
+        transform: scale(1.65) translateX(1px);
+        transition-timing-function: var(--ease-3);
+        transition-duration: 0.25s;
+    }
+
+    [data-theme="dark"] .sun-moon > .sun-beams {
+        transform: rotate(-25deg);
+        transition-duration: 0.15s;
+    }
+
+    [data-theme="dark"] .sun-moon > .moon > circle {
+        transition-delay: 0.25s;
+        transition-duration: 0.5s;
+    }
+}
+
+@media (hover: none) {
+    .theme-toggle {
+        --size: 48px;
     }
 }
 
@@ -31,6 +97,16 @@
 * {
     padding: 0;
     margin: 0;
+}
+
+/*main*/
+html {
+    background-color: var(--main-bg);
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    color: var(--text-fg);
 }
 
 a {
@@ -92,16 +168,6 @@ a {
     box-shadow: var(--button-alt-shadow);
 }
 
-/*main*/
-html {
-    background-color: var(--main-bg);
-}
-
-body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-    color: var(--text-fg);
-}
-
 /*main container*/
 .content-container {
     padding: 30px;
@@ -149,6 +215,10 @@ header #right a {
 header #right button.button {
     height: 40px;
     width: 40px;
+}
+
+header #right button.button > svg {
+    stroke-linecap: round;
 }
 
 /*projects section*/

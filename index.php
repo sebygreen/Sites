@@ -1,14 +1,3 @@
-<?php
-$themeClass = '';
-if (!empty($_COOKIE['theme'])) {
-    if ($_COOKIE['theme'] == 'dark') {
-        $themeClass = 'dark-theme';
-    } else if ($_COOKIE['theme'] == 'light') {
-        $themeClass = 'light-theme';
-    }
-}
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -18,9 +7,10 @@ if (!empty($_COOKIE['theme'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Webroot</title>
     <link href="style.css" rel="stylesheet" type="text/css" />
+    <script src="script.js"></script>
 </head>
 
-<body class="<?= $themeClass; ?>">
+<body>
 
     <div class="content-container">
         <header>
@@ -72,17 +62,23 @@ if (!empty($_COOKIE['theme'])) {
             </div>
             <div id="right">
                 <a class="button" target="_blank" href="/info.php">phpinfo();</a>
-                <button class="button" id="theme-toggle">
-                    <svg fill="currentColor" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 512 512">
-                        <path d="M256,118a22,22,0,0,1-22-22V48a22,22,0,0,1,44,0V96A22,22,0,0,1,256,118Z"></path>
-                        <path d="M256,486a22,22,0,0,1-22-22V416a22,22,0,0,1,44,0v48A22,22,0,0,1,256,486Z"></path>
-                        <path d="M369.14,164.86a22,22,0,0,1-15.56-37.55l33.94-33.94a22,22,0,0,1,31.11,31.11l-33.94,33.94A21.93,21.93,0,0,1,369.14,164.86Z"></path>
-                        <path d="M108.92,425.08a22,22,0,0,1-15.55-37.56l33.94-33.94a22,22,0,1,1,31.11,31.11l-33.94,33.94A21.94,21.94,0,0,1,108.92,425.08Z"></path>
-                        <path d="M464,278H416a22,22,0,0,1,0-44h48a22,22,0,0,1,0,44Z"></path>
-                        <path d="M96,278H48a22,22,0,0,1,0-44H96a22,22,0,0,1,0,44Z"></path>
-                        <path d="M403.08,425.08a21.94,21.94,0,0,1-15.56-6.45l-33.94-33.94a22,22,0,0,1,31.11-31.11l33.94,33.94a22,22,0,0,1-15.55,37.56Z"></path>
-                        <path d="M142.86,164.86a21.89,21.89,0,0,1-15.55-6.44L93.37,124.48a22,22,0,0,1,31.11-31.11l33.94,33.94a22,22,0,0,1-15.56,37.55Z"></path>
-                        <path d="M256,358A102,102,0,1,1,358,256,102.12,102.12,0,0,1,256,358Z"></path>
+                <button class="button" id="theme-toggle" title="Toggles light & dark themes." aria-label="auto" aria-live="polite">
+                    <svg class="sun-moon" aria-hidden="true" width="22" height="22" viewBox="0 0 24 24">
+                        <mask class="moon" id="moon-mask">
+                            <rect x="0" y="0" width="100%" height="100%" fill="white" />
+                            <circle cx="24" cy="10" r="6" fill="black" />
+                        </mask>
+                        <circle class="sun" cx="12" cy="12" r="6" mask="url(#moon-mask)" fill="currentColor" />
+                        <g class="sun-beams" stroke="currentColor">
+                            <line x1="12" y1="1" x2="12" y2="3" />
+                            <line x1="12" y1="21" x2="12" y2="23" />
+                            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+                            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+                            <line x1="1" y1="12" x2="3" y2="12" />
+                            <line x1="21" y1="12" x2="23" y2="12" />
+                            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+                            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+                        </g>
                     </svg>
                 </button>
             </div>
@@ -172,7 +168,6 @@ if (!empty($_COOKIE['theme'])) {
 
         </section>
     </div>
-    <script src="script.js"></script>
 
 </body>
 
