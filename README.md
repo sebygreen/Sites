@@ -18,7 +18,7 @@ I have tested this with an Apache developement server on macOS 12.6.1 Monterey a
 
 I had to make some modifications to the `httpd` configuration, specifically regarding virtual hosts. This is mainly to allow for the default ('home.test' for me) URL to be served alongside the wildcarded project folders that serve my projects.
 
-This is the state of my current httpd-vhosts.conf file.
+This is the state of my current httpd-vhosts.conf file on macOS, as an example. Other systems may require additional configuration.
 
 ```apacheconf
 <Virtualhost *:80>
