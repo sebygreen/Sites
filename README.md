@@ -16,8 +16,7 @@ I have tested this with an Apache developement server on macOS 12.6.1 Monterey a
 
 ### httpd-vhosts.conf
 
-I had to make some modifications to the `httpd` configuration, specifically regarding virtual hosts. This is mainly to allow for the default ('home.test' for me) URL to be served alongside the wildcarded project folders that serve my projects.
-
+I had to make some modifications to the default `httpd` configuration, specifically regarding virtual hosts on my machines.
 This is the state of my current httpd-vhosts.conf file on macOS, as an example. Other systems may require additional configuration.
 
 ```apacheconf
@@ -37,6 +36,6 @@ This configuration will allow '[project_name].test' to be served.
 
 ## Installation
 
-All that is needed, is too install and configure the local server environment on your machine, and drop the php files into your newly created local web root folder. From there, creating a new static project only requires the creation of a new folder containing an `index.html` at minimum, and the homepage should pick up the project from the same directory. A `favicon.ico` or `favicon.png` will be picked up automatically as well, if there is one.
+All that is needed, is too install and configure the local server environment on your machine, and drop the php files into your local web root folder. From there, create a new project directory containing an `index.html` at minimum, and the homepage should pick up the project from the same directory. A `favicon.ico` or `favicon.png` will be picked up automatically as well, if there is one.
 
 Editing the links can be done in the index.php file.
