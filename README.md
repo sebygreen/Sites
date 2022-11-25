@@ -22,12 +22,12 @@ This is the state of my current httpd-vhosts.conf file.
 
 ```apacheconf
 <Virtualhost *:80>
-    DocumentRoot "/Users/sebastiengreen/Sites"
+    DocumentRoot "/Users/[homefolder]/Sites"
     ServerName localhost
 </Virtualhost>
 
 <Virtualhost *:80>
-    VirtualDocumentRoot "/Users/sebastiengreen/Sites/%1"
+    VirtualDocumentRoot "/Users/[homefolder]/Sites/%1"
     ServerAlias *.test
     UseCanonicalName Off
 </Virtualhost>
