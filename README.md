@@ -36,6 +36,6 @@ This configuration will allow '[project_name].test' to be served.
 
 ## Installation
 
-All that is needed, is too install and configure the local server environment on your machine, and drop the php files into your local web root folder. From there, create a new project directory containing an `index.html` at minimum, and the homepage should pick up the project from the same directory. A `favicon.ico` or `favicon.png` will be picked up automatically as well, if there is one.
+All that is needed, is too install and configure the local server environment on your machine, and clone this repository into your local web root folder. From there, create a new project directory containing an `index.html` at minimum, and the homepage should pick up the project from the same directory. A `favicon.ico` or `favicon.png` will be picked up automatically as well, if there is one.
 
 Editing the links can be done in the index.php file.
